@@ -34,22 +34,31 @@ function Countdown() {
   return (
     <Box
       sx={{
-        display: "inline-flex",
-        gap: 2,
-        flexWrap: "wrap",
+        display: "flex",
+        flexDirection: "column",
+        gap: 0.5,
+        alignItems: "center",
         justifyContent: "center",
         mt: 2,
-        px: { xs: 2, sm: 3 },
-        py: { xs: 0.5, sm: 1 },
+        px: { xs: 2, sm: 4 },
+        py: { xs: 1, sm: 1.5 },
         borderRadius: 999,
         backgroundColor: "rgba(255,255,255,0.08)",
         border: "1px solid rgba(255,255,255,0.18)",
       }}
     >
-      <Typography variant="h5" sx={{ color: "primary.light", fontWeight: 700 }}>
+      <Typography variant="body1" sx={{ color: "primary.light", fontWeight: 700, fontSize: { xs: "0.95rem", sm: "1.1rem" } }}>
         Faltan
       </Typography>
-      <Typography variant="h5" sx={{ color: "text.primary", fontWeight: 800, letterSpacing: "0.05em" }}>
+      <Typography
+        sx={{
+          color: "text.primary",
+          fontWeight: 800,
+          letterSpacing: "0.05em",
+          fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
+          whiteSpace: "nowrap",
+        }}
+      >
         {days}d {pad(hours)}h {pad(minutes)}m {pad(seconds)}s
       </Typography>
     </Box>
