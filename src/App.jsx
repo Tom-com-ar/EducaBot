@@ -1,13 +1,15 @@
-import Navbar from "./components/Navbar";
+﻿import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 
-export default function App() {
+export default function App({ modoOscuro, setModoOscuro }) {
   return (
     <>
       {/* Navbar fijo con navegación principal */}
-      <Navbar />
+      <Navbar modoOscuro={modoOscuro} setModoOscuro={setModoOscuro} />
       {/* Portada del sitio (RF2) */}
       <Hero />
+
+      {/* RF3: cuadrícula responsiva de competencias y talleres */}
     </>
   );
 }

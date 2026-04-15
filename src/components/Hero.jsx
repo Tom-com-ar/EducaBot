@@ -4,6 +4,7 @@ import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import Countdown from "./Countdown";
 
 function Hero() {
   return (
@@ -27,8 +28,10 @@ function Hero() {
     >
       {/* Container limita el ancho para que no se estire demasiado en pantallas grandes */}
       <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
+        
         {/* Stack ordena verticalmente los elementos con espacio uniforme */}
-        <Stack spacing={3} alignItems="center" textAlign="center">
+        <Stack spacing={3} sx={{ alignItems: "center", textAlign: "center" }}>
+          <Countdown />
           {/* Chip de contexto rápido del evento */}
           <Chip
             label="15 — 17 oct 2026 · Centro de Convenciones Tecnológicas"

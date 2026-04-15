@@ -1,68 +1,70 @@
 import { createTheme } from "@mui/material/styles";
 
-/**
- * Este archivo define el "tema global" de Material UI.
- * Pensalo como la identidad visual base: colores, tipografías y formas.
- */
-export const appTheme = createTheme({
-  palette: {
-    // Modo general del tema. Todos los componentes MUI se adaptan a esto.
-    mode: "dark",
-    primary: {
-      // Color principal (botones, links destacados, chips, etc.).
-      main: "#22d3ee",
-    },
-    secondary: {
-      // Color secundario para acciones/acentos alternativos.
-      main: "#c084fc",
-    },
-    background: {
-      // Fondo global y fondo de "superficies" (cards, appbar, drawer).
-      default: "#050810",
-      paper: "rgba(15, 23, 42, 0.72)",
-    },
-    text: {
-      // Contraste de texto principal y secundario.
-      primary: "#f1f5f9",
-      secondary: "#a8b7d4",
-    },
+const paletteValues = {
+  primary: {
+    main: "#f8b538",
+    contrastText: "#020617",
   },
-  typography: {
-    // Fuente global de los componentes MUI.
-    fontFamily: '"Plus Jakarta Sans", system-ui, "Segoe UI", Roboto, sans-serif',
-    h3: {
-      // Estilo base para títulos grandes (ej: hero).
-      fontWeight: 800,
-      letterSpacing: "-0.03em",
-      lineHeight: 1.15,
-    },
-    h6: {
-      // Estilo base para subtítulos.
-      fontWeight: 500,
-      lineHeight: 1.55,
-    },
+  secondary: {
+    main: "#ff2626",
+    contrastText: "#ffffff",
   },
-  shape: {
-    // Redondeo por defecto para botones, cards, inputs, etc.
-    borderRadius: 14,
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          // Evita MAYUSCULAS automáticas en botones de MUI.
-          textTransform: "none",
-          fontWeight: 700,
+};
+
+export const getAppTheme = (mode = "dark") =>
+  createTheme({
+    palette: {
+      mode,
+      ...paletteValues,
+      background: {
+        default: mode === "dark" ? "#070b1d" : "#959595",
+        paper: mode === "dark" ? "rgba(15, 23, 42, 0.96)" : "#ffffff",
+      },
+      text: {
+        primary: mode === "dark" ? "#ffffff" : "#ffffff",
+        secondary: mode === "dark" ? "#ffffff" : "#ffffff",
+      },
+    },
+    typography: {
+      fontFamily: '"Plus Jakarta Sans", system-ui, "Segoe UI", Roboto, sans-serif',
+      h3: {
+        fontWeight: 800,
+        letterSpacing: "-0.03em",
+        lineHeight: 1.15,
+      },
+      h6: {
+        fontWeight: 500,
+        lineHeight: 1.55,
+      },
+    },
+    shape: {
+      borderRadius: 14,
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            textTransform: "none",
+            fontWeight: 700,
+          },
+        },
+      },
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            backgroundImage: "none",
+            backgroundColor: mode === "dark" ? "rgba(8, 14, 35, 0.9)" : "rgba(215, 2, 2, 0.82)",
+            color: mode === "dark" ? "#f8fafc" : "#0f172a",
+          },
+        },
+      },
+      MuiCard: {
+        styleOverrides: {
+          root: {
+            backgroundColor: mode === "dark" ? "rgba(11, 20, 45, 0.97)" : "#f8fafc",
+            border: mode === "dark" ? "1px solid rgba(96, 165, 250, 0.14)" : "1px solid rgba(148, 163, 184, 0.16)",
+          },
         },
       },
     },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          // Quita el degradado por defecto del AppBar.
-          backgroundImage: "none",
-        },
-      },
-    },
-  },
-});
+  });

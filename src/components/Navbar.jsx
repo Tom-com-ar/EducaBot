@@ -11,6 +11,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
+import ModoOscuroToggle from "./ModoOscuroToggle";
 
 // Lista de enlaces de navegación. Se reutiliza en desktop y móvil.
 const enlaces = [
@@ -21,7 +22,7 @@ const enlaces = [
   { label: "Dashboard", href: "#dashboard" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ modoOscuro, setModoOscuro }) {
   // Estado del Drawer (menú lateral en mobile).
   const [movilAbierto, setMovilAbierto] = useState(false);
 
@@ -38,6 +39,7 @@ export default function Navbar() {
           borderColor: "divider",
           backgroundColor: "rgba(5, 8, 16, 0.75)",
           backdropFilter: "blur(14px)",
+          color: "#ffffff",
         }}
       >
         {/* Toolbar centra y da padding interno al contenido del navbar */}
@@ -57,14 +59,21 @@ export default function Navbar() {
             Educabot
           </Typography>
 
+          
+
           {/* Menú de desktop: visible desde md en adelante */}
-          <Box sx={{ display: { xs: "none", md: "flex" }, ml: 4, gap: 0.5, flexGrow: 1 }}>
+          <Box sx={{ display: { xs: "none", md: "flex" }, ml: 2, gap: 0.5, flexGrow: 1 }}>
             {enlaces.map((item) => (
               <Button key={item.href} color="inherit" href={item.href} sx={{ fontWeight: 600 }}>
                 {item.label}
               </Button>
             ))}
           </Box>
+
+          <ModoOscuroToggle
+            modoOscuro={modoOscuro}
+            onToggle={() => setModoOscuro((prev) => (prev === "dark" ? "light" : "dark"))}
+          />
 
           {/* Botón hamburguesa: solo visible en pantallas chicas */}
           <IconButton
