@@ -55,3 +55,49 @@ code {
   font-family: ui-monospace, Consolas, monospace;
   font-size: 0.9em;
 }
+
+/* Animaciones y tarjetas con glow para el catálogo */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-card {
+  animation: fadeInUp 0.9s ease both;
+}
+
+.ui-card {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.84);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ui-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(34, 211, 238, 0.18), 0 0 36px rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.4);
+}
+
+.card-chip {
+  background: rgba(34, 211, 238, 0.12);
+  color: #a5f3fc;
+  border: 1px solid rgba(34, 211, 238, 0.24);
+}
+
+.grid-section {
+  scroll-margin-top: 95px;
+}
+
+@media (max-width: 900px) {
+  .ui-card {
+    border-radius: 24px;
+  }
+}
