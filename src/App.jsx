@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import TarjetaCompetencia from "./components/TarjetaCompetencia";
 import TarjetaTaller from "./components/TarjetaTaller";
 import DashboardPage from "./pages/Dashboard";
+import FormularioInscripcion from "./components/FormularioInscripcion";
 
 const competencias = [
   {
@@ -164,6 +165,16 @@ export default function App({ modoOscuro, setModoOscuro }) {
         </Container>
       </Box>
 
+      <Box id="inscripcion" sx={{ py: { xs: 6, md: 10 }, px: { xs: 2, md: 4 } }}>
+        <Container maxWidth="md">
+          <Typography variant="h4" sx={{ fontWeight: 800, mb: 3 }}>
+            Inscribite a un taller o competencia
+          </Typography>
+
+          <FormularioInscripcion />
+        </Container>
+      </Box>
+      
       <Footer />
     </>
   );

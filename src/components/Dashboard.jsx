@@ -8,12 +8,23 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
+import useIndexedDB from "../hooks/useIndexedDB";
 
-const inscripcionesGuardadas = [
-
-];
 
 function Dashboard() {
+    const { obtenerInscripciones, db } = useIndexedDB();
+  const [inscripcionesGuardadas, setInscripciones] = useState([]);
+
+  useEffect(() => {
+  if (!db) return; 
+  const cargar = async () => {
+    const data = await obtenerInscripciones();
+    setInscripciones(data);
+  };
+
+  cargar();
+}, [db]);
   return (
     <Box component="section" id="dashboard" sx={{ py: { xs: 6, md: 10 }, px: { xs: 2, md: 4 } }}>
       <Container maxWidth="lg">
